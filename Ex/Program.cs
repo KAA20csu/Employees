@@ -4,7 +4,7 @@ namespace Ex
 	{
 		private static void Main(string[] args)
 		{
-			DataReader.GetPerson();
+			DataReader.GetFileData();
 			WorkPlace.GetWorkPlaceInfo();
 		}
 	}
