@@ -14,7 +14,7 @@ namespace Ex
 
 		public static void GetWorkPlaceInfo()
 		{
-			var groupOfemployees = DataReader.person.GroupBy(e => e.Work.workName,
+			var groupOfemployees = DataReader.Persons.GroupBy(e => e.Work.workName,
 					(key, g) =>
 						new { Key = key, Value = g.Count(f => f.IsHead) })
 				.OrderBy(c => c.Key);

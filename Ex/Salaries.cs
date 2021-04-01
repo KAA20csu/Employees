@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,7 +8,7 @@ namespace Ex
 	{
 		public static void GetSalaries()
 		{
-			var groupOfEmployees = DataReader.person.GroupBy(e => e.Work.workName,
+			var groupOfEmployees = DataReader.Persons.GroupBy(e => e.Work.workName,
 				(key, g) => new { Key = key, Value = g.Where(g => g.IsHead == false) });
 
 			foreach (var employee in groupOfEmployees)
@@ -20,7 +20,7 @@ namespace Ex
 
 		public static void GetTheRichestHead()
 		{
-			var groupOfHeads = DataReader.person.GroupBy(e => e.Work.workName,
+			var groupOfHeads = DataReader.Persons.GroupBy(e => e.Work.workName,
 				(key, g) => new { Key = key, Value = g.Where(g => g.IsHead) });
 
 			var headSalaries = new List<double>();
