@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 
-namespace Ex
+namespace Ex.Services
 {
-	internal class Salaries
+	class PayrollService
 	{
-		// всё это вынесем в отдельный сервис
 		public static void GetSalaries()
 		{
 			var groupOfEmployees = DataReader.Persons.GroupBy(e => e.Work.workName,
@@ -19,7 +18,6 @@ namespace Ex
 			}
 		}
 
-		// всё это вынесем в отдельный сервис
 		public static void GetTheRichestHead()
 		{
 			var groupOfHeads = DataReader.Persons.GroupBy(e => e.Work.workName,
@@ -34,6 +32,25 @@ namespace Ex
 
 			var richest = headSalaries.Max();
 			Console.WriteLine("Cамая высокая зарплата руководителя: " + richest);
+		}
+
+		public static void GetWorkPlaceInfo()
+		{
+			var groupOfemployees = DataReader.Persons.GroupBy(e => e.Work.workName,
+					(key, g) =>
+						new { Key = key, Value = g.Count(f => f.IsHead) })
+				.OrderBy(c => c.Key);
+
+			foreach (var employee in groupOfemployees)
+			{
+				if (employee.Value < 1 || employee.Value > 2)
+				{
+					throw new Exception("Ошибка!");
+				}
+			}
+
+			Salaries.GetSalaries();
+			Salaries.GetTheRichestHead();
 		}
 	}
 }
