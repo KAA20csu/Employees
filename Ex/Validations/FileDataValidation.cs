@@ -8,14 +8,12 @@ namespace Ex.Validations
 	{
 		public static void Validate(IList<Person> persons)
 		{
-			foreach (var workGroup in persons.GroupBy(person => person.Work))
+			// можно вот так
+			if (persons.GroupBy(person => person.Work)
+				.Select(workGroup => workGroup.Count(v => v.IsHead))
+				.Any(heads => heads < 1 || heads > 2))
 			{
-				var heads = workGroup.Count(v => v.IsHead);
-
-				if (heads < 1 || heads > 2)
-				{
-					throw new Exception("Ошибка!");
-				}
+				throw new Exception("Ошибка!");
 			}
 		}
 	}
