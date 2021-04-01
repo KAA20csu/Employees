@@ -1,14 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using Ex.Data;
 
 namespace Ex.Services
 {
+	/// <summary>
+	/// Реализуем этот сервис, как сервис запросов к данным
+	/// </summary>
 	class PayrollService
 	{
 		public static void GetSalaries()
 		{
-			var groupOfEmployees = DataReader.Persons.GroupBy(e => e.Work.workName,
+			var groupOfEmployees = FileData.Persons.GroupBy(e => e.Work.workName,
 				(key, g) => new { Key = key, Value = g.Where(g => g.IsHead == false) });
 
 			foreach (var employee in groupOfEmployees)
@@ -20,7 +25,7 @@ namespace Ex.Services
 
 		public static void GetTheRichestHead()
 		{
-			var groupOfHeads = DataReader.Persons.GroupBy(e => e.Work.workName,
+			var groupOfHeads = FileData.Persons.GroupBy(e => e.Work.workName,
 				(key, g) => new { Key = key, Value = g.Where(g => g.IsHead) });
 
 			var headSalaries = new List<double>();
@@ -36,7 +41,7 @@ namespace Ex.Services
 
 		public static void GetWorkPlaceInfo()
 		{
-			var groupOfemployees = DataReader.Persons.GroupBy(e => e.Work.workName,
+			var groupOfemployees = FileData.Persons.GroupBy(e => e.Work.workName,
 					(key, g) =>
 						new { Key = key, Value = g.Count(f => f.IsHead) })
 				.OrderBy(c => c.Key);
