@@ -3,12 +3,14 @@ using System.IO;
 
 namespace Ex
 {
-	/// <summary>
-	/// Сам же класс DataReader выполняет сервисную функцию, т.к. он должен только
-	/// читать фаил, в данном случае, но не как че хранить в себе данные
-	/// </summary>
 	internal class DataReader
 	{
+		/// <summary>
+		/// здесь должно было быть { get; } свойство, но не поле. поля даолжны быть
+		/// закрытыми, и, принято именовать их так => _persons. Т.е. приватное поле с _
+		/// вначале. Свойства же, именуют с большой буквы, Persons. На конце s -
+		/// множественное число (коллекция)
+		/// </summary>
 		public static List<Person> person = new List<Person>();
 
 		public static string[] information { get; } = File.ReadAllLines("tsk.txt");
