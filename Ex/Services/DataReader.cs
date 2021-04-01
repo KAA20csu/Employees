@@ -1,14 +1,26 @@
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace Ex
 {
 	internal class DataReader
 	{
-		private const string FILE_NAME = "tsk.txt";
+		private const string FileName = "tsk.txt";
 
-		public string[] GetFileData()
+		public IList<string[]> GetFileData()
 		{
-			var information = File.ReadAllLines(FILE_NAME);
+			var information = new List<string[]>();
+
+			using var fileStream = File.OpenRead(FileName);
+			using var streamReader = new StreamReader(fileStream, Encoding.UTF8);
+
+			string line;
+
+			while ((line = streamReader.ReadLine()) != null)
+			{
+				information.Add(line.Split(";"));
+			}
 
 			return information;
 		}
