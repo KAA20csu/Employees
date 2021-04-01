@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace Ex
 {
+	/// <summary>
+	/// по хорошему, все классы вынести в отдельные файлы
+	/// </summary>
 	internal class Program
 	{
 		private static void Main(string[] args)
