@@ -3,9 +3,6 @@ using System.Linq;
 
 namespace Ex.Data
 {
-	/// <summary>
-	/// теперь мы умеем получать и хранить информацию
-	/// </summary>
 	internal class FileData
 	{
 		private readonly DataReader _dataReader;

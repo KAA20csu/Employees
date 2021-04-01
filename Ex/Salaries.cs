@@ -6,6 +6,7 @@ namespace Ex
 {
 	internal class Salaries
 	{
+		// всё это вынесем в отдельный сервис
 		public static void GetSalaries()
 		{
 			var groupOfEmployees = DataReader.Persons.GroupBy(e => e.Work.workName,
@@ -18,6 +19,7 @@ namespace Ex
 			}
 		}
 
+		// всё это вынесем в отдельный сервис
 		public static void GetTheRichestHead()
 		{
 			var groupOfHeads = DataReader.Persons.GroupBy(e => e.Work.workName,
