@@ -3,16 +3,14 @@ using System.IO;
 
 namespace Ex
 {
+	/// <summary>
+	/// Сам же класс DataReader выполняет сервисную функцию, т.к. он должен только
+	/// читать фаил, в данном случае, но не как че хранить в себе данные
+	/// </summary>
 	internal class DataReader
 	{
 		public static List<Person> person = new List<Person>();
 
-		/// <summary>
-		/// В данном случае (да и чаще всего) статический класс это плохо. Скажем так, в
-		/// будущем возникнут проблемы с потокобезопасностью, а так же, данная коллекция
-		/// хранится на протяжении всего времени выполнения приложения. Но зачем,
-		/// используется только раз
-		/// </summary>
 		public static string[] information { get; } = File.ReadAllLines("tsk.txt");
 
 		public static void GetPerson()
