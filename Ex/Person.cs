@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Ex
 {
@@ -6,6 +6,7 @@ namespace Ex
 	{
 		public Person(string[] inforamtion, WorkPlace work)
 		{
+			// здесь этого делать не надо, нужно(!!!) передавать сразу необходимые поля
 			Name = inforamtion[0];
 			Work = work;
 			Salary = int.Parse(inforamtion[2]);

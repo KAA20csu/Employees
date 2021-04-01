@@ -17,10 +17,8 @@ namespace Ex.Data
 		{
 			var information = _dataReader.GetFileData();
 
-			foreach (var line in information)
+			foreach (var data in information)
 			{
-				var data = line.Split(";");
-
 				Persons.Add(new Person(data, new WorkPlace(data[1])));
 			}
 		}
