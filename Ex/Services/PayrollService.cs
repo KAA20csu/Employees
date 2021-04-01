@@ -37,6 +37,10 @@ namespace Ex.Services
 
 		public static void GetWorkPlaceInfo()
 		{
+			// это является валидацией данных, и вынесим в отдельный фаил
+			// + выполним ее при заполнении нашей коллекции с даннми FileData.Persons
+			// в нашем хранилищи
+
 			var groupOfemployees = FileData.Persons.GroupBy(e => e.Work.workName,
 					(key, g) =>
 						new { Key = key, Value = g.Count(f => f.IsHead) })
