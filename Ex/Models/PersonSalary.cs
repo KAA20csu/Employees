@@ -1,11 +1,11 @@
 namespace Ex.Models
 {
-	internal class PersonAverageSalary
+	internal class PersonSalary
 	{
 		public bool IsHead { get; set; }
 
 		public string WorkName { get; set; }
 
-		public decimal Salary { get; set; }
+		public double Salary { get; set; }
 	}
 }

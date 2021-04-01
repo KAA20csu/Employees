@@ -8,7 +8,7 @@ namespace Ex.Validations
 	{
 		public static void Validate(IList<Person> persons)
 		{
-			foreach (var workGroup in persons.GroupBy(person => person.Work))
+			foreach (var workGroup in persons.GroupBy(person => person.Work.WorkName))
 			{
 				var heads = workGroup.Count(v => v.IsHead);
 

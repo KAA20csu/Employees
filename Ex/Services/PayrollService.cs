@@ -1,38 +1,27 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Ex.Data;
+using Ex.Models;
 
 namespace Ex.Services
 {
 	internal class PayrollService
 	{
-		public static void GetSalaries()
+		public IList<PersonSalary> GetSalaries()
 		{
-			var groupOfEmployees = FileData.Persons.GroupBy(e => e.Work.workName,
-				(key, g) => new { Key = key, Value = g.Where(g => g.IsHead == false) });
-
-			foreach (var employee in groupOfEmployees)
-			{
-				var salary = employee.Value.Average(f => f.Salary);
-				Console.WriteLine($"Средняя зарплата по {employee.Key}: " + salary);
-			}
+			return FileData.Persons.GroupBy(e => e.Work.WorkName,
+					(key, g) => new { WorkName = key, Persons = g.Where(g => g.IsHead == false) })
+				.Select(g => new PersonSalary { WorkName = g.WorkName, Salary = g.Persons.Average(p => p.Salary) })
+				.ToList();
 		}
 
-		public static void GetTheRichestHead()
+		public double GetTheRichestHead()
 		{
-			var groupOfHeads = FileData.Persons.GroupBy(e => e.Work.workName,
-				(key, g) => new { Key = key, Value = g.Where(g => g.IsHead) });
-
-			var headSalaries = new List<double>();
-
-			foreach (var head in groupOfHeads)
-			{
-				headSalaries.Add(head.Value.Max(f => f.Salary));
-			}
-
-			var richest = headSalaries.Max();
-			Console.WriteLine("Cамая высокая зарплата руководителя: " + richest);
+			return FileData.Persons.GroupBy(e => e.Work.WorkName,
+					(key, g) => new { Key = key, Value = g.Where(g => g.IsHead) })
+				.Select(head => head.Value.Max(f => f.Salary))
+				.Select(dummy => (double) dummy)
+				.Max();
 		}
 	}
 }
