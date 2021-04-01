@@ -1,18 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Ex.Data;
 
 namespace Ex.Services
 {
-	/// <summary>
-	/// Реализуем этот сервис, как сервис запросов к данным
-	/// </summary>
-	class PayrollService
+	internal class PayrollService
 	{
 		public static void GetSalaries()
 		{
+			// создадим экземляр класса для ананимных типов
 			var groupOfEmployees = FileData.Persons.GroupBy(e => e.Work.workName,
 				(key, g) => new { Key = key, Value = g.Where(g => g.IsHead == false) });
 
