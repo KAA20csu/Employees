@@ -1,23 +1,13 @@
-using System;
-
 namespace Ex
 {
 	internal class Person
 	{
-		public Person(string[] inforamtion, WorkPlace work)
+		public Person(string name, int salary, bool isHead, WorkPlace work)
 		{
-			// здесь этого делать не надо, нужно(!!!) передавать сразу необходимые поля
-			Name = inforamtion[0];
+			Name = name;
+			Salary = salary;
+			IsHead = isHead;
 			Work = work;
-			Salary = int.Parse(inforamtion[2]);
-
-			if (inforamtion.Length == 4)
-			{
-				IsHead = Convert.ToBoolean(inforamtion[3]);
-			} else
-			{
-				IsHead = false;
-			}
 		}
 
 		public string Name { get; }
