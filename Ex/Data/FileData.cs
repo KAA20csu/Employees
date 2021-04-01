@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Ex.Data
 {
@@ -17,10 +18,9 @@ namespace Ex.Data
 		{
 			var information = _dataReader.GetFileData();
 
-			foreach (var data in information)
-			{
-				Persons.Add(new Person(data, new WorkPlace(data[1])));
-			}
+			Persons = information.Select(data =>
+					new Person(data[0], int.Parse(data[2]), data.Length == 4 && bool.Parse(data[3]), new WorkPlace(data[1])))
+				.ToList();
 		}
 	}
 }
