@@ -4,8 +4,15 @@ using System.Linq;
 
 namespace Ex.Validations
 {
+	/// <summary>
+	/// Класс валидатор
+	/// </summary>
 	internal class FileDataValidation
 	{
+		/// <summary>
+		/// Валидация данных из файла
+		/// </summary>
+		/// <param name="persons"></param>
 		public static void Validate(IList<Person> persons)
 		{
 			foreach (var workGroup in persons.GroupBy(person => person.Work.WorkName))

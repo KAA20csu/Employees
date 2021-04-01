@@ -4,6 +4,9 @@ using Ex.Validations;
 
 namespace Ex.Data
 {
+	/// <summary>
+	/// Хранилище данных
+	/// </summary>
 	internal class FileData
 	{
 		private readonly DataReader _dataReader;
@@ -15,6 +18,9 @@ namespace Ex.Data
 
 		public static IList<Person> Persons { get; private set; }
 
+		/// <summary>
+		/// Инициализация данных
+		/// </summary>
 		public void Initialize()
 		{
 			var information = _dataReader.GetFileData();

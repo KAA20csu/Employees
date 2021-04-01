@@ -4,10 +4,20 @@ using System.Text;
 
 namespace Ex
 {
+	/// <summary>
+	/// Класс чтения данных из файла
+	/// </summary>
 	internal class DataReader
 	{
 		private const string FileName = "tsk.txt";
 
+		/// <summary>
+		/// Получения данных файла
+		/// </summary>
+		/// <returns> </returns>
+		/// <remark>
+		/// Данные возвращаются в готовом виде
+		/// </remark>
 		public IList<string[]> GetFileData()
 		{
 			var information = new List<string[]>();
