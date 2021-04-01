@@ -7,7 +7,7 @@ namespace Ex.Services
 {
 	internal class PayrollService
 	{
-		public IList<PersonSalary> GetSalaries()
+		public IList<PersonSalary> GetAverageSalaries()
 		{
 			return FileData.Persons.GroupBy(e => e.Work.WorkName,
 					(key, g) => new { WorkName = key, Persons = g.Where(g => g.IsHead == false) })
