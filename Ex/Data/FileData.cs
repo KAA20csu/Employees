@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Ex.Validations;
 
 namespace Ex.Data
 {
@@ -21,6 +22,8 @@ namespace Ex.Data
 			Persons = information.Select(data =>
 					new Person(data[0], int.Parse(data[2]), data.Length == 4 && bool.Parse(data[3]), new WorkPlace(data[1])))
 				.ToList();
+
+			FileDataValidation.Validate(Persons);
 		}
 	}
 }
