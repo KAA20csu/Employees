@@ -9,7 +9,6 @@ namespace Ex.Services
 	{
 		public static void GetSalaries()
 		{
-			// создадим экземляр класса для ананимных типов
 			var groupOfEmployees = FileData.Persons.GroupBy(e => e.Work.workName,
 				(key, g) => new { Key = key, Value = g.Where(g => g.IsHead == false) });
 
